@@ -1,31 +1,25 @@
 import React from "react";
-import { useQuery } from "@apollo/client";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
+import { AuthProvider } from "./providers/AuthProvider"
 
 import "./assets/less/App.less";
 
-import { Avatar } from "primereact/avatar";
-
-import { FETCH_CLIENT_USER } from './gql/queries/user';
+import Home from "./pages/Home";
+import Callback from "./components/Callback";
 
 const App = () => {
-    const { loading, data } = useQuery(FETCH_CLIENT_USER);
-
-    if (loading) return <></>;
-
-    const { clientUser: bot } = data;
-
-    console.log(bot);
 
     return (
-        <>
-            <div className="flex flex-column align-items-center justify-content-center m-2 pt-5 scalein animation-duration-1000">
-                <Avatar image={bot.avatarURL} size="xlarge" shape="circle" />
-                <h1>{bot.username}</h1>
-                <h3>{bot.description}</h3>
-            </div>
-            <div className="flex flex-row align-items-center justify-content-center pt-5 scalein animation-duration-1000">
-            </div>
-        </>
+        <Router>
+            <AuthProvider>
+                <a href="https://discord.com/api/oauth2/authorize?client_id=969414951292788766&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fcallback&response_type=code&scope=identify%20guilds" >Login</a>
+                <Routes>
+                    <Route element={<Home />} path='/' />
+                    <Route element={<Callback />} path="/callback" />
+                </Routes>
+            </AuthProvider>
+        </Router>
     )
 };
 
