@@ -9,11 +9,13 @@ import Home from "./pages/Home";
 
 import Login from "./components/Login";
 import Navigation from "./components/Navigation";
+import RightClick from "./components/RightClick";
 
 const App = () => {
     return (
         <Router>
             <AuthProvider>
+                <RightClick />
                 <Navigation />
                 <Routes>
                     <Route element={<Home />} path='/' />
