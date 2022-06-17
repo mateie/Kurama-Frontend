@@ -11,3 +11,9 @@ export const FETCH_CLIENT_USER = gql`
         clientUser
     }
 `;
+
+export const FETCH_COMMANDS = gql`
+    {
+        commands
+    }
+`;
