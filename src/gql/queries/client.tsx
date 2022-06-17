@@ -17,3 +17,9 @@ export const FETCH_COMMANDS = gql`
         commands
     }
 `;
+
+export const FETCH_COMMAND = gql`
+    query($commandName: String!) {
+        command(commandName: $commandName)
+    }
+`
