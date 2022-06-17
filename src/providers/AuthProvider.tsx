@@ -24,13 +24,11 @@ const AuthProvider = (props: any) => {
     });
 
     const lin = (token: any) => {
-        localStorage.setItem('kuratoken', token);
         const decoded: any = jwtDecode(token);
         authUser({ variables: { auth: decoded.token } });
     };
 
     const lout = () => {
-        localStorage.removeItem('kuratoken');
         navigate('/');
         dispatch(logout());
     }
