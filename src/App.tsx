@@ -6,17 +6,18 @@ import { AuthProvider } from "./providers/AuthProvider"
 import "./assets/less/App.less";
 
 import Home from "./pages/Home";
-import Callback from "./components/Callback";
+
+import Login from "./components/Login";
+import Navigation from "./components/Navigation";
 
 const App = () => {
-
     return (
         <Router>
             <AuthProvider>
-                <a href="https://discord.com/api/oauth2/authorize?client_id=969414951292788766&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fcallback&response_type=code&scope=identify%20guilds" >Login</a>
+                <Navigation />
                 <Routes>
                     <Route element={<Home />} path='/' />
-                    <Route element={<Callback />} path="/callback" />
+                    <Route element={<Login />} path="/login" />
                 </Routes>
             </AuthProvider>
         </Router>
