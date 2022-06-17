@@ -11,9 +11,11 @@ import { FETCH_COMMANDS } from '../gql/queries/client';
 
 import { capFirstLetter } from '../util';
 import ProfileButton from './ProfileButton';
+import { useNavigate } from 'react-router-dom';
 
 const Navigation = () => {
     const { auth } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const { data, loading } = useQuery(FETCH_COMMANDS);
 
@@ -29,9 +31,12 @@ const Navigation = () => {
                     label: capFirstLetter(category.id),
                     items: category.commands.map((command: any) => {
                         return {
-                            label: capFirstLetter(command.name)
+                            label: capFirstLetter(command.name),
+                            command: () => {
+                                navigate(`/command/${command.name}`);
+                            }
                         };
-                    })
+                    }),
                 };
             })
         }

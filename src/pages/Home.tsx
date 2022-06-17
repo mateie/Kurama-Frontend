@@ -6,7 +6,7 @@ import { FETCH_CLIENT_USER } from "../gql/queries/client";
 import { FETCH_GUILDS } from "../gql/queries/guilds";
 
 const Home = () => {
-    const { loading: clientLoading, data: clientData } = useQuery(FETCH_CLIENT_USER);
+    const { loading: clientLoading, data: clientData } = useQuery(FETCH_CLIENT_USER, { pollInterval: 100000 });
     const { loading: guildsLoading, data: guildsData } = useQuery(FETCH_GUILDS);
 
     if (clientLoading || guildsLoading) return <></>;

@@ -9,16 +9,18 @@ import Home from "./pages/Home";
 
 import Login from "./components/Login";
 import Navigation from "./components/Navigation";
-import RightClick from "./components/RightClick";
+import CommandPage from './pages/CommandPage';
 
 const App = () => {
     return (
         <Router>
             <AuthProvider>
-                <RightClick />
                 <Navigation />
                 <Routes>
-                    <Route element={<Home />} path='/' />
+                    <Route caseSensitive element={<Home />} path='/' />
+                    <Route caseSensitive path="command">
+                        <Route path=":commandName" element={<CommandPage />} />
+                    </Route>
                     <Route element={<Login />} path="/login" />
                 </Routes>
             </AuthProvider>
