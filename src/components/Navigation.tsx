@@ -25,6 +25,10 @@ const Navigation = () => {
 
     const items = [
         {
+            label: 'Home',
+            command: () => navigate('/'),
+        },
+        {
             label: 'Commands',
             items: categories.map((category: any) => {
                 return {
@@ -32,9 +36,7 @@ const Navigation = () => {
                     items: category.commands.map((command: any) => {
                         return {
                             label: capFirstLetter(command.name),
-                            command: () => {
-                                navigate(`/command/${command.name}`);
-                            }
+                            command: () => navigate(`/command/${command.name}`),
                         };
                     }),
                 };
