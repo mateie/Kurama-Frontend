@@ -40,8 +40,8 @@
   },
   "scripts": {
     "start": "node server.js",
-    "dev": "set \"GENERATE_SOURCEMAP=false\" && craco start",
-    "build": "set \"GENERATE_SOURCEMAP=false\" && craco build",
+    "dev": "craco start",
+    "build": "craco build",
     "test": "craco test",
     "eject": "craco eject"
   },
