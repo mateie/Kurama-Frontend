@@ -21,20 +21,14 @@ const CommandPage = () => {
 
     const { command } = data;
 
-    //console.log(command);
-
-    return <div className="flex flex-align-items-center justify-content-center">
-        {error && (
-            <h1>{commandName} not found</h1>
-        )}
-        {!loading && (
-            <Card title={capFirstLetter(command.name)} subTitle={command.ownerOnly ? `${command.description} (Owner Only)` : command.description}>
-                {command.permission && (<p>Permission: {capEachFirstLetter(command.permission.toLowerCase().split('_').join(' '))}</p>)}
-                {command.data.options && command.data.options.length > 0 && (
-                    <CommandOptions options={command.data.options} />
-                )}
-            </Card>
-        )}
+    return <div className="flex align-items-center justify-content-center">
+        {error && <h1>{commandName} not found</h1>}
+        <Card title={capFirstLetter(command.name)} subTitle={command.ownerOnly ? `${command.description} (Owner Only)` : command.description}>
+            {command.permission && (<p>Permission: {capEachFirstLetter(command.permission.toLowerCase().split('_').join(' '))}</p>)}
+            {command.data.options && command.data.options.length > 0 && (
+                <CommandOptions options={command.data.options} />
+            )}
+        </Card>
     </div>;
 };
 

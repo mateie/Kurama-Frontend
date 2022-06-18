@@ -10,6 +10,7 @@ import Home from "./pages/Home";
 import Login from "./components/Login";
 import Navigation from "./components/Navigation";
 import CommandPage from './pages/CommandPage';
+import GuildPage from "./pages/GuildPage";
 
 const App = () => {
     return (
@@ -20,6 +21,9 @@ const App = () => {
                     <Route caseSensitive element={<Home />} path='/' />
                     <Route caseSensitive path="command">
                         <Route path=":commandName" element={<CommandPage />} />
+                    </Route>
+                    <Route caseSensitive path="guild">
+                        <Route path=":guildId" element={<GuildPage />} />
                     </Route>
                     <Route element={<Login />} path="/login" />
                 </Routes>

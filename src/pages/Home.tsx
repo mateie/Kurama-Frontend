@@ -1,7 +1,8 @@
 import { useQuery } from "@apollo/client";
 
 import { Avatar } from "primereact/avatar"
-import GuildCarousel from "../components/GuildCarousel";
+
+import GuildCarousel from "../components/Guild/GuildCarousel";
 
 import { FETCH_CLIENT_USER } from "../gql/queries/client";
 
