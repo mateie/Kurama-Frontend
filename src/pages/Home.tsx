@@ -45,7 +45,7 @@ const Home = () => {
             )}
             <div className="flex flex-row align-items-center justify-content-center pt-5 scalein">
                 {servers === 'bot' && <GuildCarousel />}
-                {servers === 'user' && auth && <UserGuildCarousel auth={auth} />}
+                {servers === 'user' && auth && <UserGuildCarousel />}
             </div>
         </>
     )

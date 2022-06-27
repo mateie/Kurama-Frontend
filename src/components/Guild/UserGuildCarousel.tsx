@@ -1,11 +1,22 @@
+import { useQuery } from '@apollo/client';
+
 import { Carousel } from "primereact/carousel";
 
 import '../../assets/less/GuildCarousel.less';
+import { FETCH_USER_GUILDS } from "../../gql/queries/users";
 
 import GuildInfo from "./GuildInfo";
 
-const UserGuildCarousel = ({ auth }: { auth: any }) => {
-    const guilds = auth.guilds.filter((guild: any) => guild.canManage);
+const UserGuildCarousel = () => {
+    const { data, loading } = useQuery(FETCH_USER_GUILDS, {
+        variables: {
+            auth: localStorage.getItem('kuraToken')
+        },
+    });
+
+    if (loading) return <></>;
+
+    const { userGuilds: guilds } = data;
 
     const guildTemplate = (guild: any) => <GuildInfo guild={guild} />
 
