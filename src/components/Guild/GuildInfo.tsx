@@ -15,7 +15,7 @@ const GuildInfo = ({ guild }: { guild: any }) => {
         : <Chip
             label={owner.username}
             image={owner.avatarURL}
-        />
+        />;
 
     return (
         <div className='guild'>

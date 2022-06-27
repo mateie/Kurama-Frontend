@@ -1,21 +1,13 @@
-import { useQuery } from '@apollo/client';
+import { Carousel } from "primereact/carousel";
 
-import '../../assets/less/GuildCarousel.less'
+import '../../assets/less/GuildCarousel.less';
 
-import { Carousel } from 'primereact/carousel';
+import GuildInfo from "./GuildInfo";
 
-import { FETCH_GUILDS } from '../../gql/queries/guilds';
+const UserGuildCarousel = ({ auth }: { auth: any }) => {
+    const guilds = auth.guilds.filter((guild: any) => guild.canManage);
 
-import GuildInfo from './GuildInfo';
-
-const GuildCarousel = () => {
-    const { data, loading } = useQuery(FETCH_GUILDS);
-
-    if (loading) return <></>;
-
-    const { guilds } = data;
-
-    const guildTemplate = (guild: any) => <GuildInfo guild={guild} />;
+    const guildTemplate = (guild: any) => <GuildInfo guild={guild} />
 
     const breakpoints = [
         {
@@ -45,4 +37,4 @@ const GuildCarousel = () => {
     )
 };
 
-export default GuildCarousel;
+export default UserGuildCarousel;

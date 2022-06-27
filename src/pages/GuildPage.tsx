@@ -23,7 +23,7 @@ const GuildPage = () => {
     return (
         <div className='flex align-items-center justify-content-center'>
             {error && <h1>Guild not found</h1>}
-            <Splitter layout='vertical'>
+            <Splitter layout='vertical' className='w-7'>
                 <SplitterPanel>
                     <GuildInfo guild={guild} />
                 </SplitterPanel>

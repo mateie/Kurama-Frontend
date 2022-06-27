@@ -6,11 +6,12 @@ import { AuthProvider } from "./providers/AuthProvider"
 import "./assets/less/App.less";
 
 import Home from "./pages/Home";
+import CommandPage from './pages/CommandPage';
+import GuildPage from "./pages/GuildPage";
+import Me from "./pages/Me";
 
 import Login from "./components/Login";
 import Navigation from "./components/Navigation";
-import CommandPage from './pages/CommandPage';
-import GuildPage from "./pages/GuildPage";
 
 const App = () => {
     return (
@@ -19,6 +20,7 @@ const App = () => {
                 <Navigation />
                 <Routes>
                     <Route caseSensitive element={<Home />} path='/' />
+                    <Route caseSensitive element={<Me />} path='/@me' />
                     <Route caseSensitive path="command">
                         <Route path=":commandName" element={<CommandPage />} />
                     </Route>

@@ -1,10 +1,14 @@
+import { useContext, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import { Avatar } from 'primereact/avatar';
 import { SlideMenu } from 'primereact/slidemenu';
-import { useContext, useRef } from 'react';
+
 import { AuthContext } from '../providers/AuthProvider';
 
 const ProfileButton = () => {
     const { auth, logout }: { auth: any, logout: any } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const menu = useRef<SlideMenu>(null);
 
@@ -12,10 +16,12 @@ const ProfileButton = () => {
 
     const items = [
         {
+            label: 'Profile',
+            command: () => navigate('/@me'),
+        },
+        {
             label: 'Logout',
-            command: () => {
-                logout();
-            }
+            command: () => logout(),
         }
     ];
 

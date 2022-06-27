@@ -42,7 +42,7 @@ const Login = () => {
 
     loginUser({ variables: { code: Buffer.from(code).toString('base64') } });
 
-    return <Navigate to='/' />
+    return <Navigate to='/' />;
 };
 
 export default Login;

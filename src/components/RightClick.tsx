@@ -5,7 +5,7 @@ const RightClick = () => {
         {
             label: 'Test',
         }
-    ]
+    ];
 
     return <ContextMenu global model={items} />
 };
