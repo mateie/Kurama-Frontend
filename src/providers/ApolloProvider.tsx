@@ -12,6 +12,9 @@ const { REACT_APP_SERVER_URL } = process.env;
 
 const httpLink = createHttpLink({
     uri: REACT_APP_SERVER_URL,
+    fetchOptions: {
+        mode: 'no-cors',
+    },
 });
 
 const authLink = setContext((_, { headers }) => {
