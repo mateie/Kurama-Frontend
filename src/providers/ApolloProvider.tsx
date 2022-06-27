@@ -6,10 +6,9 @@ import { store, persistor } from '../reducers';
 
 import { ApolloClient, ApolloProvider, InMemoryCache, ApolloLink, createHttpLink } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
+import { onError } from "@apollo/client/link/error";
 
 const { REACT_APP_SERVER_URL } = process.env;
-
-console.log(REACT_APP_SERVER_URL);
 
 const httpLink = createHttpLink({
     uri: REACT_APP_SERVER_URL,
@@ -25,13 +24,24 @@ const authLink = setContext((_, { headers }) => {
     };
 });
 
-const link = ApolloLink.from([authLink, httpLink]);
+const errorLink = onError(({ graphQLErrors, networkError }) => {
+    if (graphQLErrors) {
+        graphQLErrors.forEach(({ message, locations, path }) => {
+            console.log(
+                `[GraphQL Error]: Message: ${message}, Location: ${locations}, Path: ${path}`
+            );
+        });
+    }
+    if (networkError) console.log(`[Network Error]: ${networkError}`);
+})
+
+const link = ApolloLink.from([authLink, errorLink, httpLink]);
 const cache = new InMemoryCache();
 
 const client = new ApolloClient({
     link,
     cache,
-    credentials: 'include'
+    credentials: 'include',
 });
 
 export default (
