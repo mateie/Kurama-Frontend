@@ -6,7 +6,7 @@ import { Avatar } from "primereact/avatar"
 import { Button } from 'primereact/button';
 
 import GuildCarousel from "../components/Guild/GuildCarousel";
-import UserGuildCarousel from '../components/Guild/UserGuildCarousel';
+import UserGuildCarousel from '../components/Guild/User/UserGuildCarousel';
 
 import { FETCH_CLIENT_USER } from "../gql/queries/client";
 

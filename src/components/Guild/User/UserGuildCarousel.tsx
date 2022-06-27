@@ -2,10 +2,10 @@ import { useQuery } from '@apollo/client';
 
 import { Carousel } from "primereact/carousel";
 
-import '../../assets/less/GuildCarousel.less';
-import { FETCH_USER_GUILDS } from "../../gql/queries/users";
+import '../../../assets/less/GuildCarousel.less';
+import { FETCH_USER_GUILDS } from "../../../gql/queries/users";
 
-import GuildInfo from "./GuildInfo";
+import UserGuildInfo from "./UserGuildInfo";
 
 const UserGuildCarousel = () => {
     const { data, loading } = useQuery(FETCH_USER_GUILDS, {
@@ -18,7 +18,7 @@ const UserGuildCarousel = () => {
 
     const { userGuilds: guilds } = data;
 
-    const guildTemplate = (guild: any) => <GuildInfo guild={guild} />
+    const guildTemplate = (guild: any) => <UserGuildInfo guild={guild} />
 
     const breakpoints = [
         {
