@@ -8,7 +8,7 @@ import { ApolloClient, ApolloProvider, InMemoryCache, ApolloLink, createHttpLink
 import { setContext } from "@apollo/client/link/context";
 
 const httpLink = createHttpLink({
-    uri: "https://kurama-bot-st.herokuapp.com/",
+    uri: process.env.SERVER_URL,
 });
 
 const authLink = setContext((_, { headers }) => {
