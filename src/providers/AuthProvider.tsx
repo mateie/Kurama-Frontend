@@ -1,5 +1,4 @@
 import { useMutation } from "@apollo/client";
-import jwtDecode from "jwt-decode";
 import { createContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -24,8 +23,8 @@ const AuthProvider = (props: any) => {
     });
 
     const lin = (token: any) => {
-        const decoded: any = jwtDecode(token);
-        authUser({ variables: { auth: decoded.token } });
+        localStorage.setItem('kuraToken', token);
+        authUser({ variables: { auth: token } });
     };
 
     const lout = () => {
