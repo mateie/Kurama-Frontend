@@ -11,7 +11,7 @@ import { onError } from "@apollo/client/link/error";
 const { REACT_APP_SERVER_URL } = process.env;
 
 const httpLink = createHttpLink({
-    uri: REACT_APP_SERVER_URL,
+    uri: 'http://73.185.96.104:4000',
 });
 
 const authLink = setContext((_, { headers }) => {
