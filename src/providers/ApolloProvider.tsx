@@ -7,8 +7,12 @@ import { store, persistor } from '../reducers';
 import { ApolloClient, ApolloProvider, InMemoryCache, ApolloLink, createHttpLink } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 
+const { SERVER_URL } = process.env;
+
+console.log(SERVER_URL);
+
 const httpLink = createHttpLink({
-    uri: process.env.SERVER_URL,
+    uri: SERVER_URL,
 });
 
 const authLink = setContext((_, { headers }) => {
