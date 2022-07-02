@@ -17,9 +17,10 @@ const Navigation = () => {
     const { auth } = useContext(AuthContext);
     const navigate = useNavigate();
 
-    const { data, loading } = useQuery(FETCH_COMMANDS);
+    const { data, loading, error } = useQuery(FETCH_COMMANDS);
 
     if (loading) return <></>;
+    if (error) console.error(error);
 
     const { commands: categories } = data;
 
