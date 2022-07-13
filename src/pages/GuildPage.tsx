@@ -10,15 +10,13 @@ import MemberTable from '../components/Guild/MemberTable';
 
 const GuildPage = () => {
     const { guildId } = useParams();
-    const { data, loading, error } = useQuery(FETCH_GUILD, {
+    const { error, loading, data: { guild } = {} } = useQuery(FETCH_GUILD, {
         variables: {
             guildId
-        }
+        },
     });
 
     if (loading) return <></>;
-
-    const { guild } = data;
 
     return (
         <div className='flex align-items-center justify-content-center'>

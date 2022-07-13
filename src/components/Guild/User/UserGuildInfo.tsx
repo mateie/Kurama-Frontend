@@ -1,18 +1,16 @@
 import { useQuery } from "@apollo/client";
 import { useNavigate } from 'react-router-dom';
 
+import { Button } from "primereact/button";
 import { Chip } from "primereact/chip";
 
 import { FETCH_USERS } from "../../../gql/queries/client";
-import { Button } from "primereact/button";
 
 const UserGuildInfo = ({ guild }: { guild: any }) => {
     const navigate = useNavigate();
-    const { loading, data } = useQuery(FETCH_USERS);
+    const { loading, data: { users } = {} } = useQuery(FETCH_USERS);
 
-    console.log(guild);
-
-    const owner = !loading && data.users.find((member: any) => member.id === guild.ownerId);
+    const owner = !loading && users.find((member: any) => member.id === guild.ownerId);
     const avatar = loading
         ? 'Loading...'
         : owner ? <Chip
@@ -26,7 +24,12 @@ const UserGuildInfo = ({ guild }: { guild: any }) => {
         <div className='guild'>
             <div className='guild-content'>
                 <div className='mb-3'>
-                    <img src={guild.iconURL} className='guild-icon' alt='Guild Icon' onClick={() => navigate(`/guild/${guild.id}`)} />
+                    {guild.botJoined ? (
+                        <img src={guild.iconURL} className='guild-icon-joined' alt='Guild Icon' onClick={() => navigate(`/guild/${guild.id}`)} />
+                    ) : (
+                        <img src={guild.iconURL} className='guild-icon' alt='Guild Icon' />
+                    )}
+
                 </div>
                 <div>
                     <h3 className='mb-1'>{guild.name}</h3>

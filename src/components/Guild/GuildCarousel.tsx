@@ -9,11 +9,7 @@ import { FETCH_GUILDS } from '../../gql/queries/guilds';
 import GuildInfo from './GuildInfo';
 
 const GuildCarousel = () => {
-    const { data, loading } = useQuery(FETCH_GUILDS);
-
-    if (loading) return <></>;
-
-    const { guilds } = data;
+    const { data: { guilds } = {} } = useQuery(FETCH_GUILDS);
 
     const guildTemplate = (guild: any) => <GuildInfo guild={guild} />;
 

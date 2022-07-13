@@ -8,15 +8,11 @@ import { FETCH_USER_GUILDS } from "../../../gql/queries/users";
 import UserGuildInfo from "./UserGuildInfo";
 
 const UserGuildCarousel = () => {
-    const { data, loading } = useQuery(FETCH_USER_GUILDS, {
+    const { data: { userGuilds: guilds } = {} } = useQuery(FETCH_USER_GUILDS, {
         variables: {
             auth: localStorage.getItem('kuraToken')
         },
     });
-
-    if (loading) return <></>;
-
-    const { userGuilds: guilds } = data;
 
     const guildTemplate = (guild: any) => <UserGuildInfo guild={guild} />
 

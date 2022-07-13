@@ -14,12 +14,10 @@ import { AuthContext } from '../providers/AuthProvider';
 
 const Home = () => {
     const { auth } = useContext(AuthContext);
-    const { loading, data } = useQuery(FETCH_CLIENT_USER, { pollInterval: 100000 });
+    const { loading, data: { clientUser: bot } = {} } = useQuery(FETCH_CLIENT_USER, { pollInterval: 100000 });
     const [servers, setServers] = useState('bot');
 
     if (loading) return <></>;
-
-    const { clientUser: bot } = data;
 
     return (
         <>

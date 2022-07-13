@@ -11,25 +11,24 @@ import CommandOptions from "../components/CommandOptions";
 const CommandPage = () => {
     const { commandName } = useParams();
 
-    const { data, loading, error } = useQuery(FETCH_COMMAND, {
+    const { error, loading, data: { command } = {} } = useQuery(FETCH_COMMAND, {
         variables: {
             commandName
         }
     });
 
-    if (loading) return <></>;
-
-    const { command } = data;
 
     return (
         <div className="flex align-items-center justify-content-center">
+            {loading && <h1>Loading {commandName}...</h1>}
             {error && <h1>{commandName} not found</h1>}
-            <Card title={capFirstLetter(command.name)} subTitle={command.ownerOnly ? `${command.description} (Owner Only)` : command.description}>
+            {!loading && <Card className="flex align-items-center justify-content-center" title={capFirstLetter(command.name)} subTitle={command.ownerOnly ? `${command.description} (Owner Only)` : command.description}>
                 {command.permission && (<p>Permission: {capEachFirstLetter(command.permission.toLowerCase().split('_').join(' '))}</p>)}
                 {command.data.options && command.data.options.length > 0 && (
                     <CommandOptions options={command.data.options} />
                 )}
             </Card>
+            }
         </div>
     );
 };

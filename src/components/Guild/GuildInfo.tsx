@@ -7,15 +7,15 @@ import { FETCH_USERS } from "../../gql/queries/client";
 
 const GuildInfo = ({ guild }: { guild: any }) => {
     const navigate = useNavigate();
-    const { loading, data } = useQuery(FETCH_USERS);
+    const { loading, data: { users } = {} } = useQuery(FETCH_USERS);
 
-    const owner = !loading && data.users.find((member: any) => member.id === guild.ownerId);
+    const owner = !loading && users.find((member: any) => member.id === guild.ownerId);
     const avatar = loading
         ? 'Loading...'
-        : <Chip
+        : owner ? <Chip
             label={owner.username}
             image={owner.avatarURL}
-        />;
+        /> : <Chip label="Unknown Owner" />;
 
     return (
         <div className='guild'>

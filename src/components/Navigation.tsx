@@ -17,11 +17,9 @@ const Navigation = () => {
     const { auth } = useContext(AuthContext);
     const navigate = useNavigate();
 
-    const { data, loading } = useQuery(FETCH_COMMANDS);
+    const { loading, data: { commands: categories } = {} } = useQuery(FETCH_COMMANDS);
 
     if (loading) return <></>;
-
-    const { commands: categories } = data;
 
     const items = [
         {
@@ -43,6 +41,7 @@ const Navigation = () => {
             })
         }
     ];
+
 
     const authLink = process.env.NODE_ENV === 'production' ? 'https://discord.com/api/oauth2/authorize?client_id=969414951292788766&redirect_uri=http%3A%2F%2Fkurama.mateie.com%2Flogin&response_type=code&scope=identify%20guilds' : 'https://discord.com/api/oauth2/authorize?client_id=969414951292788766&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Flogin&response_type=code&scope=identify%20guilds';
 

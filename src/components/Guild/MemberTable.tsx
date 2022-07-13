@@ -22,19 +22,11 @@ const MemberTable = ({ guild }: { guild: any }) => {
 
     const [globalFilterValue, setGlobalFilterValue] = useState('');
 
-    const { data, loading } = useQuery(FETCH_MEMBERS, {
+    const { loading, data: { members } = {} } = useQuery(FETCH_MEMBERS, {
         variables: {
             guildId: guild.id,
         }
     });
-
-    if (loading) return (
-        <div className='flex justify-content-center align-items-center'>
-            <h4>Loading Members...</h4>
-        </div>
-    );
-
-    const { members } = data;
 
     const onGlobalFilterChange = (e: any) => {
         const value = e.target.value;
@@ -49,7 +41,7 @@ const MemberTable = ({ guild }: { guild: any }) => {
         return (
             <div className='flex justify-content-between align-items-center'>
                 <div className='flex justify-content-start'>
-                    <h5 className='m-0'>Members ({members.length})</h5>
+                    <h5 className='m-0'>Members ({members ? members.length : 0})</h5>
                 </div>
                 <div className='flex justify-content-end'>
                     <span className='p-input-icon-left'>
@@ -62,7 +54,6 @@ const MemberTable = ({ guild }: { guild: any }) => {
     }
 
     const usernameTemplate = (member: any) => {
-        console.log(member);
         return (
             <Chip
                 imageAlt={member.username}
