@@ -5,3 +5,9 @@ export const FETCH_USER_GUILDS = gql`
         userGuilds(auth: $auth)
     }
 `;
+
+export const FETCH_USER_CARD = gql`
+    query($userId: String!) {
+        userCard(userId: $userId)
+    }
+`;
