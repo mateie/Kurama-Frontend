@@ -1,5 +1,4 @@
 import { useContext } from 'react';
-import { useQuery } from '@apollo/client';
 import { AuthContext } from '../providers/AuthProvider';
 
 import '../assets/less/Navigation.less';
@@ -7,9 +6,6 @@ import '../assets/less/Navigation.less';
 import { Button } from 'primereact/button';
 import { Menubar } from 'primereact/menubar';
 
-import { FETCH_COMMANDS } from '../gql/queries/client';
-
-import { capFirstLetter } from '../util';
 import ProfileButton from './ProfileButton';
 import { useNavigate } from 'react-router-dom';
 
@@ -17,16 +13,16 @@ const Navigation = () => {
     const { auth } = useContext(AuthContext);
     const navigate = useNavigate();
 
-    const { loading, data: { commands: categories } = {} } = useQuery(FETCH_COMMANDS);
+    /*const { loading, data: { commands: categories } = {} } = useQuery(FETCH_COMMANDS);
 
-    if (loading) return <></>;
+    if (loading) return <></>;*/
 
     const items = [
         {
             label: 'Home',
             command: () => navigate('/'),
         },
-        {
+        /*{
             label: 'Commands',
             items: categories.map((category: any) => {
                 return {
@@ -39,7 +35,7 @@ const Navigation = () => {
                     }),
                 };
             })
-        }
+        }*/
     ];
 
 
