@@ -12,7 +12,7 @@ export const LOGIN_USER = gql`
 
 export const AUTH_USER = gql`
     mutation authuser(
-        $auth: Object
+        $auth: String!
     ) {
         authUser (
             auth: $auth
