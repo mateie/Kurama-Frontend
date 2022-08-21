@@ -3,13 +3,16 @@ import { useNavigate } from 'react-router-dom';
 
 import { Chip } from "primereact/chip";
 
-import { FETCH_USERS } from "../../gql/queries/client";
+import { FETCH_USER } from "../../gql/queries/users";
 
 const GuildInfo = ({ guild }: { guild: any }) => {
     const navigate = useNavigate();
-    const { loading, data: { users } = {} } = useQuery(FETCH_USERS);
+    const { loading, data: { user: owner } = {} } = useQuery(FETCH_USER, {
+        variables: {
+            userId: guild.ownerId
+        }
+    });
 
-    const owner = !loading && users.find((member: any) => member.id === guild.ownerId);
     const avatar = loading
         ? 'Loading...'
         : owner ? <Chip
