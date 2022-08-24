@@ -12,7 +12,8 @@ const GuildPage = () => {
     const { guildId } = useParams();
     const { error, loading, data: { guild } = {} } = useQuery(FETCH_GUILD, {
         variables: {
-            guildId
+            guildId,
+            database: true,
         },
     });
 
