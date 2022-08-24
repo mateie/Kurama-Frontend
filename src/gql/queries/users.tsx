@@ -13,8 +13,8 @@ export const FETCH_USER = gql`
 `;
 
 export const FETCH_USER_GUILDS = gql`
-    query($auth: Object!) {
-        userGuilds(auth: $auth)
+    query($auth: String!, $database: Boolean) {
+        userGuilds(auth: $auth, database: $database)
     }
 `;
 
