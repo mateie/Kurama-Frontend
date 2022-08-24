@@ -1,14 +1,14 @@
 import gql from "graphql-tag";
 
 export const FETCH_GUILDS = gql`
-    {
-        guilds
+    query($database: Boolean){
+        guilds(database: $database)
     }
 `;
 
 export const FETCH_GUILD = gql`
-    query($guildId: String!) {
-        guild(guildId: $guildId)
+    query($guildId: String!, $database: Boolean) {
+        guild(guildId: $guildId, database: $database)
     }
 `;
 
