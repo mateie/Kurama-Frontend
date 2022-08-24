@@ -6,7 +6,6 @@ import { AuthProvider } from "./providers/AuthProvider"
 import "./assets/less/App.less";
 
 import Home from "./pages/Home";
-import CommandPage from './pages/CommandPage';
 import GuildPage from "./pages/GuildPage";
 import Me from "./pages/Me";
 
@@ -21,9 +20,6 @@ const App = () => {
                 <Routes>
                     <Route caseSensitive element={<Home />} path='/' />
                     <Route caseSensitive element={<Me />} path='/@me' />
-                    <Route caseSensitive path="command">
-                        <Route path=":commandName" element={<CommandPage />} />
-                    </Route>
                     <Route caseSensitive path="guild">
                         <Route path=":guildId" element={<GuildPage />} />
                     </Route>
