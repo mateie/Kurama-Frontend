@@ -10,7 +10,7 @@ import MemberTable from '../components/Guild/MemberTable';
 
 const GuildPage = () => {
     const { guildId } = useParams();
-    const { error, loading, data: { guild } = {} } = useQuery(FETCH_GUILD, {
+    const { loading, data: { guild } = {} } = useQuery(FETCH_GUILD, {
         variables: {
             guildId,
             database: true,
@@ -23,7 +23,6 @@ const GuildPage = () => {
 
     return (
         <div className='flex align-items-center justify-content-center'>
-            {error && <h1>Guild not found</h1>}
             <Splitter layout='vertical' className='w-7'>
                 <SplitterPanel>
                     <GuildInfo guild={guild} />
