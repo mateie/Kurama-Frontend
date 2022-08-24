@@ -1,6 +1,7 @@
 import { useQuery } from '@apollo/client';
 
 import { Carousel } from "primereact/carousel";
+import { ProgressSpinner } from 'primereact/progressspinner';
 
 import '../../../assets/less/GuildCarousel.less';
 import { FETCH_USER_GUILDS } from "../../../gql/queries/users";
@@ -8,9 +9,9 @@ import { FETCH_USER_GUILDS } from "../../../gql/queries/users";
 import UserGuildInfo from "./UserGuildInfo";
 
 const UserGuildCarousel = () => {
-    const { data: { userGuilds: guilds } = {} } = useQuery(FETCH_USER_GUILDS, {
+    const { loading, data: { userGuilds: guilds } = {} } = useQuery(FETCH_USER_GUILDS, {
         variables: {
-            auth: localStorage.getItem('kuraToken')
+            auth: localStorage.getItem('kuraToken'),
         },
     });
 
@@ -34,7 +35,7 @@ const UserGuildCarousel = () => {
         }
     ];
 
-    return (
+    return loading ? <ProgressSpinner style={{ width: '50px', height: '50px' }} strokeWidth="8" fill="var(--surface-ground)" animationDuration=".5s" /> : (
         <Carousel
             value={guilds}
             itemTemplate={guildTemplate}
