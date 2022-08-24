@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
 import { Splitter, SplitterPanel } from 'primereact/splitter';
@@ -18,6 +18,8 @@ const GuildPage = () => {
     });
 
     if (loading) return <></>;
+
+    if (!guild) return <Navigate to='/' replace={true} />
 
     return (
         <div className='flex align-items-center justify-content-center'>
