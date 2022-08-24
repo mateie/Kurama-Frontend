@@ -13,29 +13,11 @@ const Navigation = () => {
     const { auth } = useContext(AuthContext);
     const navigate = useNavigate();
 
-    /*const { loading, data: { commands: categories } = {} } = useQuery(FETCH_COMMANDS);
-
-    if (loading) return <></>;*/
-
     const items = [
         {
             label: 'Home',
             command: () => navigate('/'),
         },
-        /*{
-            label: 'Commands',
-            items: categories.map((category: any) => {
-                return {
-                    label: capFirstLetter(category.id),
-                    items: category.commands.map((command: any) => {
-                        return {
-                            label: capFirstLetter(command.name),
-                            command: () => navigate(`/command/${command.name}`),
-                        };
-                    }),
-                };
-            })
-        }*/
     ];
 
 
