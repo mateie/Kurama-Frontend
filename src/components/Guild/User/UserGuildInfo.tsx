@@ -8,6 +8,7 @@ import { FETCH_USER } from "../../../gql/queries/users";
 
 const UserGuildInfo = ({ guild }: { guild: any }) => {
     const navigate = useNavigate();
+
     const { loading, data: { user: owner } = {} } = useQuery(FETCH_USER, {
         variables: {
             userId: guild.ownerId
@@ -28,7 +29,7 @@ const UserGuildInfo = ({ guild }: { guild: any }) => {
             <div className='guild-content'>
                 <div className='mb-3'>
                     {guild.botJoined ? (
-                        <img src={guild.iconURL} className='guild-icon-joined' alt='Guild Icon' onClick={() => navigate(`/guild/${guild.id}`)} />
+                        <img src={guild.iconURL} className='guild-icon' id="joined" alt='Guild Icon' onClick={() => navigate(`/guild/${guild.id}`)} />
                     ) : (
                         <img src={guild.iconURL} className='guild-icon' alt='Guild Icon' />
                     )}
