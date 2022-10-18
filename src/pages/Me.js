@@ -12,8 +12,6 @@ const Me = () => {
 
     if (!auth) return <Navigate to="/" replace={true} />;
 
-    console.log(auth);
-
     const cardHeader = (
         <div
             className="bg-contain bg-no-repeat bg-center h-10rem"

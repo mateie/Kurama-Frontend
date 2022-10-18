@@ -34,8 +34,6 @@ const GuildCarousel = () => {
         }
     ];
 
-    console.log(guilds);
-
     return loading && !guilds ? (
         <ProgressSpinner
             style={{ width: "50px", height: "50px" }}
