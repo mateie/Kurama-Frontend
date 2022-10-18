@@ -25,7 +25,7 @@ const Home = () => {
     ) : error ? (
         <h1>Bot seems to be offline</h1>
     ) : (
-        <div className="flex flex-wrap align-items-center justify-content-center">
+        <div className="flex flex-column align-items-center justify-content-center">
             <Avatar
                 image={bot.avatarURL}
                 size="xlarge"
@@ -43,7 +43,7 @@ const Home = () => {
 
     return (
         <>
-            <div className="flex justify-content-between m-2 pt-5 scalein animation-ease-out animation-duration-500">
+            <div className="flex justify-content-center scalein animation-ease-out animation-duration-500">
                 {BotInfo}
             </div>
             {!error && auth && (
