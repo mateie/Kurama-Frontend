@@ -194,7 +194,7 @@ const MemberTable = ({ auth, guild }) => {
             }
         ];
 
-        return (
+        return member.id !== auth.id && (
             <>
                 {guild.authPerms.includes("MODERATE_MEMBERS") && (
                     <SplitButton
