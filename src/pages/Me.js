@@ -5,7 +5,6 @@ import UserRankImage from "../components/User/UserRankImage";
 import { Navigate } from "react-router-dom";
 
 import { Card } from "primereact/card";
-import { Chip } from "primereact/chip";
 
 const Me = () => {
     const { auth } = useContext(AuthContext);
