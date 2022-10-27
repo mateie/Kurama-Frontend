@@ -34,6 +34,7 @@ const Home = () => {
             />
             <h2>{bot.username}</h2>
             <h4>{bot.description}</h4>
+            <small style={{ color: 'red'}}>The website for the bot will be making a switch to a new web framework for faster performance</small>
             <h5>
                 Currently I am in {bot.guilds} servers and have {bot.users}{" "}
                 users
