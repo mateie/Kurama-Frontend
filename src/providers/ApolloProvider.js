@@ -16,6 +16,8 @@ import { onError } from "@apollo/client/link/error";
 
 const { REACT_APP_SERVER_URL } = process.env;
 
+console.log(REACT_APP_SERVER_URL);
+
 const httpLink = createHttpLink({
     uri: REACT_APP_SERVER_URL
 });
