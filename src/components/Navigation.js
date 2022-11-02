@@ -25,6 +25,8 @@ const Navigation = () => {
             ? "https://discord.com/api/oauth2/authorize?client_id=969414951292788766&redirect_uri=https%3A%2F%2Fkuramisa.com%2Flogin&response_type=code&scope=identify%20guilds"
             : "https://discord.com/api/oauth2/authorize?client_id=969414951292788766&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Flogin&response_type=code&scope=identify%20guilds";
 
+    console.log(authLink);
+
     if (!auth)
         return (
             <Menubar
