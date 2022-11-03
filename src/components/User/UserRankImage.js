@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client";
-import { FETCH_USER_CARD } from "../../gql/queries/users";
+import { FetchUserCard } from "../../gql/queries/users";
 import { Buffer } from "buffer";
 
 import { ProgressSpinner } from "primereact/progressspinner";
@@ -10,7 +10,7 @@ const UserRankImage = ({
     height
 }) => {
     const { loading, data: { userCard: card } = {} } = useQuery(
-        FETCH_USER_CARD,
+        FetchUserCard,
         {
             variables: {
                 userId

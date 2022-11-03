@@ -5,12 +5,12 @@ import "../../assets/less/GuildCarousel.less";
 import { Carousel } from "primereact/carousel";
 import { ProgressSpinner } from "primereact/progressspinner";
 
-import { FETCH_GUILDS } from "../../gql/queries/guilds";
+import { FetchGuilds } from "../../gql/queries/guilds";
 
 import GuildInfo from "./GuildInfo";
 
 const GuildCarousel = () => {
-    const { loading, data: { guilds } = {} } = useQuery(FETCH_GUILDS, {
+    const { loading, data: { guilds } = {} } = useQuery(FetchGuilds, {
         variables: { fetchDb: true }
     });
 

@@ -1,24 +1,24 @@
 import gql from "graphql-tag";
 
-export const FETCH_CLIENT = gql`
+export const FetchClient = gql`
     {
         client
     }
 `;
 
-export const FETCH_CLIENT_USER = gql`
+export const FetchClientUser = gql`
     {
         clientUser
     }
 `;
 
-export const FETCH_COMMANDS = gql`
+export const FetchCommands = gql`
     {
         commands
     }
 `;
 
-export const FETCH_COMMAND = gql`
+export const FetchCommand = gql`
     query ($commandName: String!) {
         command(commandName: $commandName)
     }

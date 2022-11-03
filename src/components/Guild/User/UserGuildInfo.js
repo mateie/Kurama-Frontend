@@ -7,12 +7,12 @@ import { Chip } from "primereact/chip";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 
-import { FETCH_USER } from "../../../gql/queries/users";
+import { FetchUser } from "../../../gql/queries/users";
 
 const UserGuildInfo = ({ guild }) => {
     const navigate = useNavigate();
     const { auth } = useContext(AuthContext);
-    const [fetchOwner, { loading, data: { user: owner } = {} }] = useLazyQuery(FETCH_USER);
+    const [fetchOwner, { loading, data: { user: owner } = {} }] = useLazyQuery(FetchUser);
 
     useEffect(() => {
         if(guild.ownerId) fetchOwner({ variables: { userId: guild.ownerId } });

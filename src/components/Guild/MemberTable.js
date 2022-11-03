@@ -17,9 +17,9 @@ import {
     Toast
 } from "primereact";
 
-import { FETCH_MEMBERS } from "../../gql/queries/guilds";
-import { REPORT_USER, WARN_USER } from "../../gql/mutations/users";
-import { FETCH_USER_REPORTS, FETCH_USER_WARNS } from "../../gql/queries/users";
+import { FetchMembers } from "../../gql/queries/guilds";
+import { ReportUser, WarnUser } from "../../gql/mutations/users";
+import { FetchReports, FetchWarns } from "../../gql/queries/users";
 
 const MemberTable = ({ auth, guild }) => {
     const [filters, setFilters] = useState({
@@ -39,7 +39,7 @@ const MemberTable = ({ auth, guild }) => {
     const [reason, setReason] = useState("");
 
     const { loading: membersLoading, data: { members } = {} } = useQuery(
-        FETCH_MEMBERS,
+        FetchMembers,
         {
             variables: {
                 guildId: guild.id,
@@ -49,20 +49,20 @@ const MemberTable = ({ auth, guild }) => {
     );
 
     const [getWarns, { loading: warningsLoading, data: { warns = {} } = {} }] =
-        useLazyQuery(FETCH_USER_WARNS);
+        useLazyQuery(FetchWarns);
 
     const [
         getReports,
         { loading: reportsLoading, data: { reports = {} } = {} }
-    ] = useLazyQuery(FETCH_USER_REPORTS);
+    ] = useLazyQuery(FetchReports);
 
-    const [warnUser, { loading: warnLoading }] = useMutation(WARN_USER, {
+    const [warnUser, { loading: warnLoading }] = useMutation(WarnUser, {
         update: () => {
             setWarnDialog(false);
         }
     });
 
-    const [reportUser, { loading: reportLoading }] = useMutation(REPORT_USER, {
+    const [reportUser, { loading: reportLoading }] = useMutation(ReportUser, {
         update: () => {
             setReportDialog(false);
         }

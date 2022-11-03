@@ -5,7 +5,7 @@ import { useMutation } from "@apollo/client";
 
 import { AuthContext } from "../providers/AuthProvider";
 
-import { LOGIN_USER } from "../gql/mutations/auth";
+import { LoginUser } from "../gql/mutations/auth";
 
 import { Toast } from "primereact/toast";
 
@@ -15,7 +15,7 @@ const Login = () => {
 
     const code = window.location.search.split("=")[1];
 
-    const [loginUser] = useMutation(LOGIN_USER, {
+    const [loginUser] = useMutation(LoginUser, {
         update: (_, { data: { login: userData } }) => {
             login(userData);
         }

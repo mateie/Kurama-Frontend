@@ -4,13 +4,13 @@ import { Carousel } from "primereact/carousel";
 import { ProgressSpinner } from "primereact/progressspinner";
 
 import "../../../assets/less/GuildCarousel.less";
-import { FETCH_USER_GUILDS } from "../../../gql/queries/users";
+import { FetchUserGuilds } from "../../../gql/queries/users";
 
 import UserGuildInfo from "./UserGuildInfo";
 
 const UserGuildCarousel = () => {
     const { loading, data: { userGuilds: guilds } = {} } = useQuery(
-        FETCH_USER_GUILDS,
+        FetchUserGuilds,
         {
             variables: {
                 auth: localStorage.getItem("kuraToken")

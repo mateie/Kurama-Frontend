@@ -7,7 +7,7 @@ import { Button } from "primereact/button";
 import GuildCarousel from "../components/Guild/GuildCarousel";
 import UserGuildCarousel from "../components/Guild/User/UserGuildCarousel";
 
-import { FETCH_CLIENT_USER } from "../gql/queries/client";
+import { FetchClientUser } from "../gql/queries/client";
 
 import { AuthContext } from "../providers/AuthProvider";
 
@@ -17,7 +17,7 @@ const Home = () => {
         loading,
         error,
         data: { clientUser: bot } = {}
-    } = useQuery(FETCH_CLIENT_USER, { pollInterval: 100000 });
+    } = useQuery(FetchClientUser, { pollInterval: 100000 });
     const [servers, setServers] = useState("bot");
 
     const BotInfo = loading ? (

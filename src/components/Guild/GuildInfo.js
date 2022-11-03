@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { Chip } from "primereact/chip";
 
-import { FETCH_USER } from "../../gql/queries/users";
+import { FetchUser } from "../../gql/queries/users";
 import { Button } from "primereact/button";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
@@ -11,7 +11,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 const GuildInfo = ({ guild }) => {
     const navigate = useNavigate();
     const { auth } = useContext(AuthContext);
-    const { loading, data: { user: owner } = {} } = useQuery(FETCH_USER, {
+    const { loading, data: { user: owner } = {} } = useQuery(FetchUser, {
         variables: {
             userId: guild.ownerId
         }

@@ -6,9 +6,9 @@ import { Splitter, SplitterPanel } from "primereact/splitter";
 
 import { AuthContext } from "../providers/AuthProvider";
 
-import { FETCH_CLIENT_USER } from "../gql/queries/client";
+import { FetchClientUser } from "../gql/queries/client";
 
-import { FETCH_GUILD } from "../gql/queries/guilds";
+import { FetchGuild } from "../gql/queries/guilds";
 
 import GuildInfo from "../components/Guild/GuildInfo";
 import MemberTable from "../components/Guild/MemberTable";
@@ -16,10 +16,10 @@ import MemberTable from "../components/Guild/MemberTable";
 const GuildPage = () => {
     const { auth } = useContext(AuthContext);
     const { guildId } = useParams();
-    const { data: { clientUser: bot } = {} } = useQuery(FETCH_CLIENT_USER, {
+    const { data: { clientUser: bot } = {} } = useQuery(FetchClientUser, {
         pollInterval: 100000
     });
-    const { loading, data: { guild } = {} } = useQuery(FETCH_GUILD, {
+    const { loading, data: { guild } = {} } = useQuery(FetchGuild, {
         variables: { guildId, fetchDb: true }
     });
 
