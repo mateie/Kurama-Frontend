@@ -1,15 +1,12 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { useQuery } from "@apollo/client";
 
 import { Avatar } from "primereact/avatar";
-import { Button } from "primereact/button";
-
-import GuildCarousel from "../components/Guild/GuildCarousel";
-import UserGuildCarousel from "../components/Guild/User/UserGuildCarousel";
 
 import { FetchClientUser } from "../gql/queries/client";
 
 import { AuthContext } from "../providers/AuthProvider";
+import Servers from "./Servers";
 
 const Home = () => {
     const { auth } = useContext(AuthContext);
@@ -18,7 +15,6 @@ const Home = () => {
         error,
         data: { clientUser: bot } = {}
     } = useQuery(FetchClientUser, { pollInterval: 100000 });
-    const [servers, setServers] = useState("bot");
 
     const BotInfo = loading ? (
         <></>
@@ -34,7 +30,6 @@ const Home = () => {
             />
             <h2>{bot.username}</h2>
             <h4>{bot.description}</h4>
-            <small style={{ color: "red"}}>The website for the bot will be making a switch to a new web framework for faster performance</small>
             <h5>
                 Currently I am in {bot.guilds} servers and have {bot.users}{" "}
                 users
@@ -47,26 +42,7 @@ const Home = () => {
             <div className="flex justify-content-center scalein animation-ease-out animation-duration-500">
                 {BotInfo}
             </div>
-            {!error && auth && (
-                <div className="flex align-items-center justify-content-center">
-                    <Button
-                        className="p-button-success mr-1"
-                        label="Bot's Servers"
-                        onClick={() => setServers("bot")}
-                    />
-                    <Button
-                        className="p-button-danger"
-                        label="Your Servers"
-                        onClick={() => setServers("user")}
-                    />
-                </div>
-            )}
-            {!error && (
-                <div className="flex flex-row align-items-center justify-content-center pt-5 scalein">
-                    {servers === "bot" && <GuildCarousel />}
-                    {servers === "user" && auth && <UserGuildCarousel />}
-                </div>
-            )}
+            <Servers auth={auth} />
         </>
     );
 };
