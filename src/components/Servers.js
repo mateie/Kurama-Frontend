@@ -1,10 +1,9 @@
 import { useState } from "react";
 
-
 import { Button } from "primereact/button";
 
-import GuildCarousel from "../components/Guild/GuildCarousel";
-import UserGuildCarousel from "../components/Guild/User/UserGuildCarousel";
+import GuildCarousel from "./Guild/GuildCarousel";
+import UserGuildCarousel from "./Guild/User/UserGuildCarousel";
 
 const Servers = ({ auth }) => {
     const [servers, setServers] = useState("bot");
@@ -31,6 +30,6 @@ const Servers = ({ auth }) => {
         </div>
         </>
     );
-}
+};
 
 export default Servers;

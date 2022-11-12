@@ -6,7 +6,7 @@ import { Avatar } from "primereact/avatar";
 import { FetchClientUser } from "../gql/queries/client";
 
 import { AuthContext } from "../providers/AuthProvider";
-import Servers from "./Servers";
+import Servers from "../components/Servers";
 
 const Home = () => {
     const { auth } = useContext(AuthContext);
