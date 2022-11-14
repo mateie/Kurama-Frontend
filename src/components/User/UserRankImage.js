@@ -4,20 +4,13 @@ import { Buffer } from "buffer";
 
 import { ProgressSpinner } from "primereact/progressspinner";
 
-const UserRankImage = ({
-    userId,
-    width,
-    height
-}) => {
-    const { loading, data: { userCard: card } = {} } = useQuery(
-        FetchUserCard,
-        {
-            variables: {
-                userId
-            },
-            pollInterval: 3000
-        }
-    );
+const UserRankImage = ({ userId, width, height }) => {
+    const { loading, data: { userCard: card } = {} } = useQuery(FetchUserCard, {
+        variables: {
+            userId,
+        },
+        pollInterval: 3000,
+    });
 
     return loading ? (
         <ProgressSpinner
@@ -29,7 +22,7 @@ const UserRankImage = ({
         <img
             style={{
                 width: `${width ? width : "auto"}`,
-                height: `${height ? height : "auto"}`
+                height: `${height ? height : "auto"}`,
             }}
             src={`data:image/png;base64,${new Buffer(card.data).toString(
                 "base64"

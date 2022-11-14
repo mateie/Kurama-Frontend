@@ -13,8 +13,8 @@ const GuildInfo = ({ guild }) => {
     const { auth } = useContext(AuthContext);
     const { loading, data: { user: owner } = {} } = useQuery(FetchUser, {
         variables: {
-            userId: guild.ownerId
-        }
+            userId: guild.ownerId,
+        },
     });
 
     const avatar = loading ? (

@@ -13,7 +13,7 @@ const Home = () => {
     const {
         loading,
         error,
-        data: { clientUser: bot } = {}
+        data: { clientUser: bot } = {},
     } = useQuery(FetchClientUser, { pollInterval: 100000 });
 
     const BotInfo = loading ? (

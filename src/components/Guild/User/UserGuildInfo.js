@@ -12,10 +12,11 @@ import { FetchUser } from "../../../gql/queries/users";
 const UserGuildInfo = ({ guild }) => {
     const navigate = useNavigate();
     const { auth } = useContext(AuthContext);
-    const [fetchOwner, { loading, data: { user: owner } = {} }] = useLazyQuery(FetchUser);
+    const [fetchOwner, { loading, data: { user: owner } = {} }] =
+        useLazyQuery(FetchUser);
 
     useEffect(() => {
-        if(guild.ownerId) fetchOwner({ variables: { userId: guild.ownerId } });
+        if (guild.ownerId) fetchOwner({ variables: { userId: guild.ownerId } });
     }, [guild, guild.ownerId]);
 
     const avatar = loading ? (
@@ -48,7 +49,8 @@ const UserGuildInfo = ({ guild }) => {
                     </h4>
                     <h5 className="mb-3">{avatar}</h5>
                     <h6 className="mt-0 mb-3">
-                        {guild.members ? guild.members.length : "Unknown"} Members
+                        {guild.members ? guild.members.length : "Unknown"}{" "}
+                        Members
                     </h6>
                 </div>
                 {guild.promoted &&

@@ -17,10 +17,10 @@ const GuildPage = () => {
     const { auth } = useContext(AuthContext);
     const { guildId } = useParams();
     const { data: { clientUser: bot } = {} } = useQuery(FetchClientUser, {
-        pollInterval: 100000
+        pollInterval: 100000,
     });
     const { loading, data: { guild } = {} } = useQuery(FetchGuild, {
-        variables: { guildId, fetchDb: true }
+        variables: { guildId, fetchDb: true },
     });
 
     if (loading) return <></>;

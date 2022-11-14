@@ -10,24 +10,24 @@ const Servers = ({ auth }) => {
 
     return (
         <>
-        {auth && (
-            <div className="flex align-items-center justify-content-center">
-                <Button
-                    className="p-button-success mr-1"
-                    label="Bot's Servers"
-                    onClick={() => setServers("bot")}
-                />
-                <Button
-                    className="p-button-danger"
-                    label="Your Servers"
-                    onClick={() => setServers("user")}
-                />
+            {auth && (
+                <div className="flex align-items-center justify-content-center">
+                    <Button
+                        className="p-button-success mr-1"
+                        label="Bot's Servers"
+                        onClick={() => setServers("bot")}
+                    />
+                    <Button
+                        className="p-button-danger"
+                        label="Your Servers"
+                        onClick={() => setServers("user")}
+                    />
+                </div>
+            )}
+            <div className="flex flex-row align-items-center justify-content-center pt-5 scalein">
+                {servers === "bot" && <GuildCarousel />}
+                {servers === "user" && auth && <UserGuildCarousel />}
             </div>
-        )}
-        <div className="flex flex-row align-items-center justify-content-center pt-5 scalein">
-            {servers === "bot" && <GuildCarousel />}
-            {servers === "user" && auth && <UserGuildCarousel />}
-        </div>
         </>
     );
 };

@@ -6,11 +6,11 @@ import authReducer from "./auth";
 
 const persistConfig = {
     key: "root",
-    storage
+    storage,
 };
 
 const rootReducer = combineReducers({
-    auth: authReducer
+    auth: authReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -19,8 +19,8 @@ const store = configureStore({
     reducer: persistedReducer,
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
-            serializableCheck: false
-        })
+            serializableCheck: false,
+        }),
 });
 
 const persistor = persistStore(store);

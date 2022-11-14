@@ -9,7 +9,7 @@ import {
     ApolloProvider,
     InMemoryCache,
     ApolloLink,
-    createHttpLink
+    createHttpLink,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import { onError } from "@apollo/client/link/error";
@@ -17,7 +17,7 @@ import { onError } from "@apollo/client/link/error";
 const { REACT_APP_SERVER_URL } = process.env;
 
 const httpLink = createHttpLink({
-    uri: REACT_APP_SERVER_URL
+    uri: REACT_APP_SERVER_URL,
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -25,8 +25,8 @@ const authLink = setContext((_, { headers }) => {
     return {
         headers: {
             ...headers,
-            authorization: token ? `Bearer ${token}` : ""
-        }
+            authorization: token ? `Bearer ${token}` : "",
+        },
     };
 });
 
@@ -47,7 +47,7 @@ const cache = new InMemoryCache();
 const client = new ApolloClient({
     link,
     cache,
-    credentials: "include"
+    credentials: "include",
 });
 
 export default (

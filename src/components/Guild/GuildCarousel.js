@@ -11,7 +11,7 @@ import GuildInfo from "./GuildInfo";
 
 const GuildCarousel = () => {
     const { loading, data: { guilds } = {} } = useQuery(FetchGuilds, {
-        variables: { fetchDb: true }
+        variables: { fetchDb: true },
     });
 
     const guildTemplate = (guild) => <GuildInfo guild={guild} />;
@@ -20,18 +20,18 @@ const GuildCarousel = () => {
         {
             breakpoint: "1024px",
             numVisible: 3,
-            numScroll: 3
+            numScroll: 3,
         },
         {
             breakpoint: "600px",
             numVisible: 2,
-            numScroll: 2
+            numScroll: 2,
         },
         {
             breakpoint: "480px",
             numVisible: 1,
-            numScroll: 1
-        }
+            numScroll: 1,
+        },
     ];
 
     return loading && !guilds ? (

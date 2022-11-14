@@ -14,7 +14,7 @@ import {
     InputText,
     Chip,
     Column,
-    Toast
+    Toast,
 } from "primereact";
 
 import { FetchMembers } from "../../gql/queries/guilds";
@@ -23,7 +23,7 @@ import { FetchReports, FetchWarns } from "../../gql/queries/users";
 
 const MemberTable = ({ auth, guild }) => {
     const [filters, setFilters] = useState({
-        global: { value: null, matchMode: FilterMatchMode.CONTAINS }
+        global: { value: null, matchMode: FilterMatchMode.CONTAINS },
     });
 
     const toast = useRef(null);
@@ -43,8 +43,8 @@ const MemberTable = ({ auth, guild }) => {
         {
             variables: {
                 guildId: guild.id,
-                fetchDb: true
-            }
+                fetchDb: true,
+            },
         }
     );
 
@@ -53,19 +53,19 @@ const MemberTable = ({ auth, guild }) => {
 
     const [
         getReports,
-        { loading: reportsLoading, data: { reports = {} } = {} }
+        { loading: reportsLoading, data: { reports = {} } = {} },
     ] = useLazyQuery(FetchReports);
 
     const [warnUser, { loading: warnLoading }] = useMutation(WarnUser, {
         update: () => {
             setWarnDialog(false);
-        }
+        },
     });
 
     const [reportUser, { loading: reportLoading }] = useMutation(ReportUser, {
         update: () => {
             setReportDialog(false);
-        }
+        },
     });
 
     const onGlobalFilterChange = (e) => {
@@ -123,12 +123,12 @@ const MemberTable = ({ auth, guild }) => {
         warnDialog: setWarnDialog,
         reportDialog: setReportDialog,
         warnsDialog: setWarnsDialog,
-        reportsDialog: setReportsDialog
+        reportsDialog: setReportsDialog,
     };
 
     const submitFuncMap = {
         warnDialog: warnUser,
-        reportDialog: reportUser
+        reportDialog: reportUser,
     };
 
     const onClick = (name, member) => {
@@ -137,12 +137,12 @@ const MemberTable = ({ auth, guild }) => {
         switch (name) {
             case "warnsDialog":
                 getWarns({
-                    variables: { guildId: guild.id, userId: member.id }
+                    variables: { guildId: guild.id, userId: member.id },
                 });
                 break;
             case "reportsDialog":
                 getReports({
-                    variables: { guildId: guild.id, userId: member.id }
+                    variables: { guildId: guild.id, userId: member.id },
                 });
                 break;
         }
@@ -158,8 +158,8 @@ const MemberTable = ({ auth, guild }) => {
             variables: {
                 guildId: guild.id,
                 userId: currentMember.id,
-                reason
-            }
+                reason,
+            },
         });
 
         const submitType = name.split(/[A-Z]/)[0];
@@ -170,7 +170,7 @@ const MemberTable = ({ auth, guild }) => {
             severity: "success",
             summary: `${submitText}ed ${currentMember.user.tag}`,
             detail: reason.length > 0 ? reason : "No reason specified",
-            life: 3000
+            life: 3000,
         });
         setReason("");
     };
@@ -181,8 +181,8 @@ const MemberTable = ({ auth, guild }) => {
                 label: "View",
                 command: () => {
                     onClick("warnsDialog", member);
-                }
-            }
+                },
+            },
         ];
 
         const reportItems = [
@@ -190,35 +190,37 @@ const MemberTable = ({ auth, guild }) => {
                 label: "View",
                 command: () => {
                     onClick("reportsDialog", member);
-                }
-            }
+                },
+            },
         ];
 
-        return member.id !== auth.id && (
-            <>
-                {guild.authPerms.includes("MODERATE_MEMBERS") && (
-                    <SplitButton
-                        label="Warn"
-                        className="p-button-danger p-button-sm"
-                        onClick={() => onClick("warnDialog", member)}
-                        model={warnItems}
-                    />
-                )}
-                {guild.authPerms.includes("VIEW_AUDIT_LOG") ? (
-                    <SplitButton
-                        label="Report"
-                        className="p-button-danger p-button-sm"
-                        onClick={() => onClick("reportDialog", member)}
-                        model={reportItems}
-                    />
-                ) : (
-                    <Button
-                        label="Report"
-                        className="p-button-danger p-button-sm"
-                        onClick={() => onClick("reportDialog", member)}
-                    />
-                )}
-            </>
+        return (
+            member.id !== auth.id && (
+                <>
+                    {guild.authPerms.includes("MODERATE_MEMBERS") && (
+                        <SplitButton
+                            label="Warn"
+                            className="p-button-danger p-button-sm"
+                            onClick={() => onClick("warnDialog", member)}
+                            model={warnItems}
+                        />
+                    )}
+                    {guild.authPerms.includes("VIEW_AUDIT_LOG") ? (
+                        <SplitButton
+                            label="Report"
+                            className="p-button-danger p-button-sm"
+                            onClick={() => onClick("reportDialog", member)}
+                            model={reportItems}
+                        />
+                    ) : (
+                        <Button
+                            label="Report"
+                            className="p-button-danger p-button-sm"
+                            onClick={() => onClick("reportDialog", member)}
+                        />
+                    )}
+                </>
+            )
         );
     };
 

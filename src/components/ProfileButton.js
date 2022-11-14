@@ -17,12 +17,12 @@ const ProfileButton = () => {
     const items = [
         {
             label: "Profile",
-            command: () => navigate("/@me")
+            command: () => navigate("/@me"),
         },
         {
             label: "Logout",
-            command: () => logout()
-        }
+            command: () => logout(),
+        },
     ];
 
     return (

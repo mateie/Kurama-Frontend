@@ -16,8 +16,8 @@ const Navigation = () => {
     const items = [
         {
             label: "Home",
-            command: () => navigate("/")
-        }
+            command: () => navigate("/"),
+        },
     ];
 
     const authLink =
