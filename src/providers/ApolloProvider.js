@@ -13,8 +13,10 @@ import {
 import { setContext } from "@apollo/client/link/context";
 import { onError } from "@apollo/client/link/error";
 
+const { REACT_APP_SERVER_URL } = process.env;
+
 const httpLink = createHttpLink({
-    uri: process.env.REACT_APP_SERVER_URL
+    uri: REACT_APP_SERVER_URL
 });
 
 const authLink = setContext((_, { headers }) => {
