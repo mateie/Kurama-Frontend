@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-empty-function */
 import { useMutation } from "@apollo/client";
 import { createContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,7 +7,7 @@ import { login, logout } from "../reducers/auth";
 
 const AuthContext = createContext({
     auth: null,
-    login: (userData) => {},
+    login: (_userData) => {},
     logout: () => {}
 });
 
