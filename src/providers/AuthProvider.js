@@ -7,7 +7,7 @@ import { login, logout } from "../reducers/auth";
 
 const AuthContext = createContext({
     auth: null,
-    login: (_userData) => {},
+    login: (userData) => { return userData },
     logout: () => {}
 });
 
