@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 import { useQuery } from "@apollo/client";
 import { FetchUserCard } from "../../gql/queries/users";
 import { Buffer } from "buffer";
@@ -7,9 +9,9 @@ import { ProgressSpinner } from "primereact/progressspinner";
 const UserRankImage = ({ userId, width, height }) => {
     const { loading, data: { userCard: card } = {} } = useQuery(FetchUserCard, {
         variables: {
-            userId,
+            userId
         },
-        pollInterval: 3000,
+        pollInterval: 3000
     });
 
     return loading ? (
@@ -22,7 +24,7 @@ const UserRankImage = ({ userId, width, height }) => {
         <img
             style={{
                 width: `${width ? width : "auto"}`,
-                height: `${height ? height : "auto"}`,
+                height: `${height ? height : "auto"}`
             }}
             src={`data:image/png;base64,${new Buffer(card.data).toString(
                 "base64"
@@ -30,6 +32,12 @@ const UserRankImage = ({ userId, width, height }) => {
             alt=""
         />
     );
+};
+
+UserRankImage.propTypes = {
+    userId: PropTypes.string,
+    width: PropTypes.number,
+    height: PropTypes.number
 };
 
 export default UserRankImage;

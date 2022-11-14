@@ -1,4 +1,3 @@
-import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import { AuthProvider } from "./providers/AuthProvider";
@@ -15,7 +14,7 @@ import Navigation from "./components/Navigation";
 const App = () => {
     console.log("%cStop!", "color: red; font-size: 40px; font-weight: bold;");
     console.log(
-        '%cDo not enter any scripts or some sort of "hack" here, it will most likely compromise your account and steal your information',
+        "%cDo not enter any scripts or some sort of \"hack\" here, it will most likely compromise your account and steal your information",
         "font-size: 30px; font-weight: bold;"
     );
     console.log(

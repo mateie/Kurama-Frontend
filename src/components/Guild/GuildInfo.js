@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 import { useQuery } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
 
@@ -13,8 +15,8 @@ const GuildInfo = ({ guild }) => {
     const { auth } = useContext(AuthContext);
     const { loading, data: { user: owner } = {} } = useQuery(FetchUser, {
         variables: {
-            userId: guild.ownerId,
-        },
+            userId: guild.ownerId
+        }
     });
 
     const avatar = loading ? (
@@ -69,6 +71,10 @@ const GuildInfo = ({ guild }) => {
             </div>
         </div>
     );
+};
+
+GuildInfo.propTypes = {
+    guild: PropTypes.object
 };
 
 export default GuildInfo;

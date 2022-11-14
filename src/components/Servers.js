@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import PropTypes from "prop-types";
 import { Button } from "primereact/button";
 
 import GuildCarousel from "./Guild/GuildCarousel";
@@ -30,6 +31,10 @@ const Servers = ({ auth }) => {
             </div>
         </>
     );
+};
+
+Servers.propTypes = {
+    auth: PropTypes.object
 };
 
 export default Servers;

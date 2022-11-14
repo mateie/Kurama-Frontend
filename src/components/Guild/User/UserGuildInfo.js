@@ -1,10 +1,13 @@
+import PropTypes from "prop-types";
+
+import { useContext, useEffect } from "react";
+
 import { useLazyQuery } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
 
 import { Button } from "primereact/button";
 import { Chip } from "primereact/chip";
 
-import { useContext, useEffect } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 
 import { FetchUser } from "../../../gql/queries/users";
@@ -72,6 +75,10 @@ const UserGuildInfo = ({ guild }) => {
             </div>
         </div>
     );
+};
+
+UserGuildInfo.propTypes = {
+    guild: PropTypes.object
 };
 
 export default UserGuildInfo;

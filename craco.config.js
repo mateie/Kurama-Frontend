@@ -4,7 +4,7 @@ const NpmImportPlugin = require("less-plugin-npm-import");
 const BUILD_PATH = path.resolve(__dirname, "./build");
 
 const removeCssHashPlugin = {
-    overrideWebpackConfig: ({ webpackConfig, cracoConfig, pluginOptions, context: { env, paths } }) => {
+    overrideWebpackConfig: ({ webpackConfig }) => {
         const plugins = webpackConfig.plugins;
         plugins.forEach(plugin => {
 

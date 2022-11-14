@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from "react";
+import { useContext, useRef } from "react";
 import { Buffer } from "buffer";
 import { Navigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
@@ -18,7 +18,7 @@ const Login = () => {
     const [loginUser] = useMutation(LoginUser, {
         update: (_, { data: { login: userData } }) => {
             login(userData);
-        },
+        }
     });
 
     const successAuth = () => {
@@ -26,7 +26,7 @@ const Login = () => {
             severity: "error",
             summary: "Invalid Token",
             detail: "Invalid token was provided for authentication",
-            life: 5000,
+            life: 5000
         });
     };
 
