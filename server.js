@@ -4,8 +4,6 @@ const fs = require('fs');
 const path = require('path');
 const app = express();
 
-console.log(fs.readFileSync(__dirname + '/private.key', 'utf-8'))
-
 let server = process.env.NODE_ENV !== 'development' ? require('https').createServer({
     privateKey: fs.readFileSync(__dirname + '/private.key', 'utf-8'),
     certificate: fs.readFileSync(__dirname + '/public.cer', 'utf-8')
