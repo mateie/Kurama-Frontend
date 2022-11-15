@@ -6,7 +6,7 @@ const app = express();
 
 let server = process.env.NODE_ENV !== 'development' ? require('https').createServer({
     privateKey: fs.readFileSync(__dirname + '/private.key', 'utf-8'),
-    certificate: fs.readFileSync(__dirname + '/intermidiate.cer', 'utf-8')
+    certificate: fs.readFileSync(__dirname + '/public.cer', 'utf-8')
 }, app) : require('http').createServer(app);
 
 const port = process.env.NODE_ENV === 'development' ? 80 : 443;
