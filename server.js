@@ -4,7 +4,7 @@ const app = express();
 
 const http = require('http').createServer(app);
 
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 443;
 const publicPath = path.join(__dirname, "build");
 
 app.use(express.static(publicPath));
